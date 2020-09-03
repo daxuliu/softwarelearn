@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-464ba0d4"],{"0433":function(n,t,e){},1511:function(n,t,e){"use strict";e.r(t);var a=function(){var n=this,t=n.$createElement,e=n._self._c||t;return e("div",{staticClass:"user"},[e("div",[n._v("点这里")]),e("router-link",{attrs:{to:{name:"add"}}},[n._v("添加照片")])],1)},s=[],r={name:"User"},c=r,u=(e("97b7"),e("2877")),i=Object(u["a"])(c,a,s,!1,null,"92e225ca",null);t["default"]=i.exports},"97b7":function(n,t,e){"use strict";var a=e("0433"),s=e.n(a);s.a}}]);
-//# sourceMappingURL=chunk-464ba0d4.a6cdc1c3.js.map
