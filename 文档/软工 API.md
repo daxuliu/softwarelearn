@@ -11,6 +11,16 @@
 
 例子：get_user_image {id: userId} -> [{imgId : int, img : file}]
 
+## 页面跳转 API
+
+首页：index
+
+登录页：login
+
+注册页：register
+
+个人相册页：selfAlbum
+
 ## 首页
 
 首页根据热度（点赞数）推荐一系列的照片（具体后端实现）
