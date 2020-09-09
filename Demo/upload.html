@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>上传图片</title>
     <meta name="renderer" content="webkit">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
 		  
 	<link rel="stylesheet" href="statics/css/upload.css">
 </head>
@@ -55,6 +54,7 @@
     var app = new Vue({
         el: '#app',
         data: {
+            username:'',
             imgTempList: [], //图片临时路径列表
             isUploading: false, //是否正在上传
             successPath: [], //上传成功后的路径(没必要)
@@ -143,13 +143,13 @@
                         //创FormData对象
                         var formdata = new FormData();
                         //append(key,value)在数据末尾追加数据。 这儿的key值需要和后台定义保持一致
-                        formdata.append('img', files);
+                        formdata.append(that.username, files);
 
                         //用axios上传，
                         axios({
                             method: "POST",
                             //url: "http://www.clluo.com:8060/uploadImg",
-							url: "http://图片上传路径",
+							url: "/pictures/upload",
                             data: formdata,
                             headers: {
                                 "Content-Type": "multipart/form-data"

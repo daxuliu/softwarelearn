@@ -9,7 +9,9 @@
 <script src="statics/js/jquery.min.js"></script>
 <script src="statics/js/jaliswall.js"></script> 
 <script src="statics/js/vue.min.js"></script>
-
+<script src="statics/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 <body>
@@ -19,7 +21,7 @@
 	</header>
 
 	<div class="wall " id="app">
-		<div class="article" v-for="item in list">
+		<div class="article" v-for="item in list" @click='click'>
 			<a :href="item.src">
 				<img :src="item.src" />
 			</a>
@@ -31,6 +33,7 @@
 	var app = new Vue({
 		el:'#app',
 		data:{
+			username: '',
 			list:[
 				{
 					src:'statics/images/1.png',
@@ -51,18 +54,40 @@
 				{
 					src:'statics/images/5.png',
 					desc:'这是图片的描述'
-				},
-				{
-					src:'statics/images/6.png',
-					desc:'这是图片的描述'
 				}
 			]
-		}
+		},
+
+		mounted: function (){
+			this.setUsername();
+			this.getPic();
+		},
+
+		methods:{
+			getPic:function (){
+				let that = this;
+				axios.get('https://', {
+					params: {
+						username: that.username
+					}
+				})
+						.then(function (response) {
+							that.list=that.list.concat(response);
+						})
+						.catch(function (error) {
+							console.log(error);
+						})
+			},
+
+			setUsername:function(){
+				this.username = window.username;
+			},
+		},
 	})
 </script>
 
 <script type="text/javascript">
-$(function(){
+	$(function(){
 	$('.wall').jaliswall({ item: '.article' });
 });
 </script>
