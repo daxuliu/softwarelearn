@@ -20,8 +20,6 @@
 个人相册页：selfAlbum
 
 ## 首页
->>>>>>> b27549a27b189a448b26abb4cee32572cdffaeef
-
 ```text
 接口：upload
 请求方式：POST

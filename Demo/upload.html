@@ -5,7 +5,8 @@
     <title>上传图片</title>
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-	<link rel="stylesheet" href="statics/css/upload.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="statics/css/upload.css">
 </head>
 <body>
 <div id="app" class="container" v-cloak>
@@ -48,7 +49,6 @@
 </div>
 
 <script src="statics/js/vue.min.js"></script>
-<script src="statics/js/axios.min.js"></script>
 <script>
     var app = new Vue({
         el: '#app',
@@ -59,6 +59,7 @@
             successPath: [], //上传成功后的路径(没必要)
         },
         mounted: function (){
+            localStorage.setItem("username", "logan");
             if(localStorage.username){
                 this.username=localStorage.username;
             }
@@ -153,7 +154,7 @@
                         axios({
                             method: "POST",
                             //url: "http://www.clluo.com:8060/uploadImg",
-							url: "/pictures/upload",
+							url: "http://47.107.227.208:8002/pic_upload/",
                             data: formdata,
                             headers: {
                                 "Content-Type": "multipart/form-data"
