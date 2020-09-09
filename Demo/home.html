@@ -5,49 +5,103 @@
 <meta charset="UTF-8">
 <title></title>
 <link rel="stylesheet" type="text/css" href="statics/css/Home.css" />
-<script src="statics/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="statics/js/jquery-1.11.0.js" ></script>
+<script src="statics/js/vue.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-
-
-
-<div class="bg-grey">
-	<div class="content">
-		<a href="#">
-			<h2 class="title">相册</h2></a>
-		<p class="subtitle">dsc</p>
-		<div class="tab-block information-tab">
-			<div class="tab-buttons ">
-				<h3 class="tab-button cur" data-tab="one">全部</h3>
-				<h3 class="tab-button" data-tab="two">最新</h3>
-				<h3 class="tab-button" data-tab="three">最热 </h3>
-			</div>
-			<div class="tabs">
-				<div class="tab-item active" id="tab-one">
-					<span>123</span>
+<body style="background-color: #f2f2f4;">
+	<div class="row text-right pull-right" style="background-color: #d6e0f0; height: auto;">
+		<div class="col-10"></div>
+		<div class="btn btn-primary col-1" style="margin: 5px;" @click="gotoLogin">登录/注册</div>
+	</div>
+	<div class="bg-grey">
+		<div>
+			<a href="#">
+				<h2 class="title">相册</h2></a>
+			<!-- <p class="subtitle">dsc</p> -->
+			<div class="tab-block information-tab">
+				<div class="tab-buttons ">
+					<h3 class="tab-button cur" data-tab="one">全部</h3>
+					<h3 class="tab-button" data-tab="two">最新</h3>
+					<h3 class="tab-button" data-tab="three">最热 </h3>
 				</div>
-				<div class="tab-item" id="tab-two">
-					<span>222</span>
-				</div>
-				<div class="tab-item" id="tab-three">
-				<span>333</span>
-					
+				<div class="tabs">
+					<div class="tab-item active" id="tab-one" style="background-color: white; height: auto;">
+						<div id="app1" class="row">
+							<div class="col-2" v-for="(item, index) in list" style="margin-bottom: 20px;" @click="gotoDisplay(index)">
+									<img :src="item.src" style="width: 150px; height: 150px;" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="tab-item" id="tab-two">
+						<div id="app2">
+
+						</div>
+					</div>
+					<div class="tab-item" id="tab-three">
+						<div id="app3">
+
+						</div>
+						
+					</div>
+					<div class="text-center" style="margin: auto;padding: 50px;">Coptyright@ouc.edu.cn of zg</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<script type="text/javascript">
-	//tab切换		
-	$('.tab-button').click(function() {
-		var tab = $(this).data('tab')
-		$(this).addClass('cur').siblings('.tab-button').removeClass('cur');
-		$('#tab-' + tab + '').addClass('active').siblings('.tab-item').removeClass('active');
-	});
-
-</script>
+	<script type="text/javascript">
+		//tab切换		
+		$('.tab-button').click(function() {
+			var tab = $(this).data('tab')
+			$(this).addClass('cur').siblings('.tab-button').removeClass('cur');
+			$('#tab-' + tab + '').addClass('active').siblings('.tab-item').removeClass('active');
+		});
+	</script>
+	<script>
+		var app1 =new Vue ({
+			el:'#app1',
+			data:{
+				list:[
+					{
+						src:'statics/images/1.png',
+						username: '1'
+					},
+					{
+						src:'statics/images/2.png',
+						username: '2'
+					},
+					{
+						src:'statics/images/3.png',
+						username: '3'
+					},
+					{
+						src:'statics/images/4.png',
+						username: '4'
+					},
+					{
+						src:'statics/images/5.png',
+						username: '5'
+					},
+					{
+						src:'statics/images/6.png',
+						username: '6'
+					}
+				]
+			},
+		methods: {
+			gotoDisplay: function (index){
+				localStorage.setItem("displayName", this.list[index].username);
+				window.location.href="./display.html";
+			},
+			gotoLogin: function (){
+				window.location.href="./loginform.html";
+			}
+		}
+		})
+	</script>
 
 </body>
 </html>

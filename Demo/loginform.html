@@ -48,7 +48,7 @@
 				methods: {
 					login:function (){
 						let that = this;
-						axios.get('/user/login', {
+						axios.get('http://47.107.227.208:8002/login', {
 							params: {
 								username: that.name,
 								pwd: that.password
@@ -56,7 +56,8 @@
 						})
 								.then(function (response) {
 									if(response){
-										window.location.href="./Home.html";
+										localStorage.setItem("username", this.username);
+										window.location.href="./home.html";
 									}
 									else{
 										alert('账号或密码错误');

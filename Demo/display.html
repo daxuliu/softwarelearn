@@ -9,7 +9,6 @@
 <script src="statics/js/jquery.min.js"></script>
 <script src="statics/js/jaliswall.js"></script> 
 <script src="statics/js/vue.min.js"></script>
-<script src="statics/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -21,7 +20,7 @@
 	</header>
 
 	<div class="wall " id="app">
-		<div class="article" v-for="item in list" @click='click'>
+		<div class="article" v-for="item in list">
 			<a :href="item.src">
 				<img :src="item.src" />
 			</a>
@@ -59,8 +58,13 @@
 		},
 
 		mounted: function (){
-			this.setUsername();
-			this.getPic();
+			if(localStorage.displayName){
+				this.username=localStorage.displayName;
+				console.log(this.username)
+			}
+			else{
+				alert("未正常跳转");
+			}
 		},
 
 		methods:{
@@ -77,11 +81,7 @@
 						.catch(function (error) {
 							console.log(error);
 						})
-			},
-
-			setUsername:function(){
-				this.username = window.username;
-			},
+			}
 		},
 	})
 </script>

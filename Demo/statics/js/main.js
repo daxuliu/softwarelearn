@@ -1,1 +1,0 @@
-window.user = 'logan';

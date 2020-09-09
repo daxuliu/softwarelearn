@@ -5,7 +5,6 @@
     <title>上传图片</title>
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-		  
 	<link rel="stylesheet" href="statics/css/upload.css">
 </head>
 <body>
@@ -54,13 +53,18 @@
     var app = new Vue({
         el: '#app',
         data: {
-            username:'',
+            username: "",
             imgTempList: [], //图片临时路径列表
             isUploading: false, //是否正在上传
             successPath: [], //上传成功后的路径(没必要)
         },
-        mounted: function () {
-            var that = this;
+        mounted: function (){
+            if(localStorage.username){
+                this.username=localStorage.username;
+            }
+            else{
+                window.location.href="./loginform.html";
+            }
         },
         watch: {},
         methods: {

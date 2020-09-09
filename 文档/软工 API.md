@@ -6,7 +6,21 @@
 
 ## 上传图片接口
 
+<<<<<<< HEAD
 上传时要在数据库中加上每张图片的上传时间, 成功上传返回true, 失败返回false.
+=======
+## 页面跳转 API
+
+首页：index
+
+登录页：login
+
+注册页：register
+
+个人相册页：selfAlbum
+
+## 首页
+>>>>>>> b27549a27b189a448b26abb4cee32572cdffaeef
 
 ```text
 接口：upload
