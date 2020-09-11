@@ -74,12 +74,3 @@ list:[ {src:'statics/images/1.png', desc:'这是图片的描述', date:'time1'} 
 表单name: username, pwd
 ```
 
-## 用户上传图片的接口
-
-```text
-接口：pic_handle
-请求方式：POST
-表单name：name
-图片存至static/media/booktest
-```
-##
