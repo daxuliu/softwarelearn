@@ -145,7 +145,7 @@ list:[ {src:'statics/images/1.png', desc:'这是图片的描述', date:'time1'} 
 成功返回true, 失败返回false.
 
 ```text
-接口: register
+接口: reg_action
 请求方式: POST
 表单name: username, pwd
 ```
