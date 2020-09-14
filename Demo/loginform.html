@@ -48,7 +48,7 @@
 				methods: {
 					login:function (){
 						let that = this;
-						axios.post('http://47.107.227.208:8002/login_action/', {
+						axios.post('http://47.107.227.208:8002/login_action', {
 							params: {
 								username: that.name,
 								pwd: that.password
@@ -65,6 +65,7 @@
 								})
 								.catch(function (error) {
 									console.log(error);
+									console.log(error.response.data);
 								})
 					}
 				},

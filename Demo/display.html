@@ -60,7 +60,8 @@
 		mounted: function (){
 			if(localStorage.displayName){
 				this.username=localStorage.displayName;
-				console.log(this.username)
+				console.log(this.username);
+				this.getPic();
 			}
 			else{
 				alert("未正常跳转");
@@ -70,13 +71,14 @@
 		methods:{
 			getPic:function (){
 				let that = this;
-				axios.get('https://', {
+				axios.get('http://47.107.227.208:8002/user', {
 					params: {
 						username: that.username
 					}
 				})
 						.then(function (response) {
 							that.list=that.list.concat(response);
+							console.log(response);
 						})
 						.catch(function (error) {
 							console.log(error);

@@ -9,6 +9,7 @@
 <script src="statics/js/vue.min.js"></script>
 <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
 <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body style="background-color: #f2f2f4;">
@@ -67,7 +68,7 @@
 				list:[
 					{
 						src:'statics/images/1.png',
-						username: '1'
+						username: 'john'
 					},
 					{
 						src:'statics/images/2.png',
@@ -91,6 +92,11 @@
 					}
 				]
 			},
+
+			mounted: function (){
+				this.getPic();
+			},
+
 		methods: {
 			gotoDisplay: function (index){
 				localStorage.setItem("displayName", this.list[index].username);
@@ -98,6 +104,21 @@
 			},
 			gotoLogin: function (){
 				window.location.href="./loginform.html";
+			},
+			getPic:function (){
+				let that = this;
+				axios.get('http://47.107.227.208:8002/album', {
+					params: {
+
+					}
+				})
+						.then(function (response) {
+							that.list=that.list.concat(response);
+							console.log(response);
+						})
+						.catch(function (error) {
+							console.log(error);
+						})
 			}
 		}
 		})
