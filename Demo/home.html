@@ -17,8 +17,8 @@
 	<div id="container">
 		<header  style="margin:0px;background-color: #d6e0f0; height: auto;">
 			<div id="apptab">
-				<div class="btn btn-primary col-1" style=" float:right; margin: 5px 10px 5px 0px;" @click="gotoLogin">登录/注册</div>
-				<div class="btn btn-primary col-1" style=" float:right; margin: 5px 10px 5px 0px;" @click="">上传照片</div>	
+				<div class="btn btn-primary col-1" style=" float:right; margin: 5px 10px 5px 0px;" @click="gotoLogin" v-if=!localStorage.username>登录/注册</div>
+				<div class="btn btn-primary col-1" style=" float:right; margin: 5px 10px 5px 0px;" @click="gotoUpload" v-if=localStorage.username>上传照片</div>	
 			</div>		
 				
 		</header>
@@ -79,7 +79,7 @@
 	</script>
 	<script>
 		var app1 =new Vue ({
-			el:'#app1',
+			el:'#container',
 			data:{
 				list:[
 					{
@@ -115,6 +115,9 @@
 			},
 			gotoLogin: function (){
 				window.location.href="./loginform.html";
+			},
+			gotoUpload: function (){
+				windows.location.href="./upload.html";
 			}
 		}
 		})
