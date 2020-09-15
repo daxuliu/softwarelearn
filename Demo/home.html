@@ -11,46 +11,63 @@
 <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body style="background-color: #f2f2f4;">
-	<div class="row text-right pull-right" style="background-color: #d6e0f0; height: auto;">
-		<div class="col-10"></div>
-		<div class="btn btn-primary col-1" style="margin: 5px;" @click="gotoLogin">登录/注册</div>
-	</div>
-	<div class="bg-grey">
-		<div>
-			<a href="#">
-				<h2 class="title">相册</h2></a>
-			<!-- <p class="subtitle">dsc</p> -->
-			<div class="tab-block information-tab">
-				<div class="tab-buttons ">
-					<h3 class="tab-button cur" data-tab="one">全部</h3>
-					<h3 class="tab-button" data-tab="two">最新</h3>
-					<h3 class="tab-button" data-tab="three">最热 </h3>
-				</div>
-				<div class="tabs">
-					<div class="tab-item active" id="tab-one" style="background-color: white; height: auto;">
-						<div id="app1" class="row">
-							<div class="col-2" v-for="(item, index) in list" style="margin-bottom: 20px;" @click="gotoDisplay(index)">
-									<img :src="item.src" style="width: 150px; height: 150px;" alt="">
+<body style="background-color: #f2f2f4;width: 100%;">
+	
+
+	<div id="container">
+		<header  style="margin:0px;background-color: #d6e0f0; height: auto;">
+			<div id="apptab">
+				<div class="btn btn-primary col-1" style=" float:right; margin: 5px 10px 5px 0px;" @click="gotoLogin" v-if=!localStorage.username>登录/注册</div>
+				<div class="btn btn-primary col-1" style=" float:right; margin: 5px 10px 5px 0px;" @click="gotoUpload" v-if=localStorage.username>上传照片</div>	
+			</div>		
+				
+		</header>
+		<div class="main">
+			<div class="bg-grey">
+		
+				<a href="#">
+					<h2 class="title">相册</h2>
+				</a>
+				<!-- <p class="subtitle">dsc</p> -->
+				<div class="tab-block information-tab">
+					<div class="tab-buttons ">
+						<h3 class="tab-button cur" data-tab="one">全部</h3>
+						<h3 class="tab-button" data-tab="two">最新</h3>
+						<h3 class="tab-button" data-tab="three">最热 </h3>
+					</div>
+					<div class="tabs">
+						<div class="tab-item active" id="tab-one" style="background-color: white; height: auto;">
+							<div id="app1" class="row">
+								<div class="col-2" v-for="(item, index) in list" style="margin-bottom: 20px;" @click="gotoDisplay(index)">
+										<img :src="item.src" style="width: 150px; height: 150px;" alt="">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="tab-item" id="tab-two">
-						<div id="app2">
-
+						<div class="tab-item" id="tab-two">
+							<div id="app2">
+	
+							</div>
 						</div>
-					</div>
-					<div class="tab-item" id="tab-three">
-						<div id="app3">
-
+						<div class="tab-item" id="tab-three">
+							<div id="app3">
+	
+							</div>
+							
 						</div>
 						
+						
 					</div>
-					<div class="text-center" style="margin: auto;padding: 50px;">Coptyright@ouc.edu.cn of zg</div>
 				</div>
+			
 			</div>
 		</div>
+		<footer>
+			<div class="text-center" style="margin: auto;padding: 50px;">Coptyright@ouc.edu.cn of zg</div>
+		</footer>
+
 	</div>
+
+	
 
 	<script type="text/javascript">
 		//tab切换		
@@ -62,7 +79,7 @@
 	</script>
 	<script>
 		var app1 =new Vue ({
-			el:'#app1',
+			el:'#container',
 			data:{
 				list:[
 					{
@@ -98,6 +115,9 @@
 			},
 			gotoLogin: function (){
 				window.location.href="./loginform.html";
+			},
+			gotoUpload: function (){
+				windows.location.href="./upload.html";
 			}
 		}
 		})

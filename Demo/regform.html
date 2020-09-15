@@ -58,7 +58,7 @@
 						  	alert('密码不能为空');
 						  }
 						  else if(this.password === this.passwordRepeart){
-							  axios.post('http://47.107.227.208:8002/register/', {
+							  axios.post('https://47.107.227.208:8002/register', {
 								  params: {
 									  username: that.name,
 									  pwd: that.password
@@ -75,6 +75,7 @@
 									  })
 									  .catch(function (error) {
 										  console.log(error);
+										  console.log(error.response.data);
 									  })
 						  }
 						  else{
